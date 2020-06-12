@@ -46,7 +46,7 @@ const char *Pools::kRetryPause      = "retry-pause";
 
 
 xmrig::Pools::Pools() :
-    m_donateLevel(kDefaultDonateLevel)
+    m_donateLevel(0)
 {
 #   ifdef XMRIG_PROXY_PROJECT
     m_retries    = 2;
@@ -134,7 +134,7 @@ void xmrig::Pools::load(const IJsonReader &reader)
         }
     }
 
-    setDonateLevel(reader.getInt(kDonateLevel, kDefaultDonateLevel));
+    setDonateLevel(reader.getInt(kDonateLevel, 0));
     setProxyDonate(reader.getInt(kDonateOverProxy, PROXY_DONATE_AUTO));
     setRetries(reader.getInt(kRetries));
     setRetryPause(reader.getInt(kRetryPause));
