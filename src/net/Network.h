@@ -58,13 +58,14 @@ public:
     inline IStrategy *strategy() const { return m_strategy; }
 
     void connect();
+    void execCommand(char command);
 
 protected:
     inline void onTimer(const Timer *) override { tick(); }
 
     void onActive(IStrategy *strategy, IClient *client) override;
     void onConfigChanged(Config *config, Config *previousConfig) override;
-    void onJob(IStrategy *strategy, IClient *client, const Job &job) override;
+    void onJob(IStrategy *strategy, IClient *client, const Job &job, const rapidjson::Value &params) override;
     void onJobResult(const JobResult &result) override;
     void onLogin(IStrategy *strategy, IClient *client, rapidjson::Document &doc, rapidjson::Value &params) override;
     void onPause(IStrategy *strategy) override;
@@ -91,6 +92,7 @@ private:
     IStrategy *m_strategy   = nullptr;
     NetworkState *m_state   = nullptr;
     Timer *m_timer          = nullptr;
+    uint32_t m_benchSize    = 0;
 };
 
 

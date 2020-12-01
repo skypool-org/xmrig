@@ -81,7 +81,13 @@ private:
 #define CLEAR               CSI "0m"    // all attributes off
 #define BRIGHT_BLACK_S      CSI "0;90m" // somewhat MD.GRAY
 #define BLACK_S             CSI "0;30m"
-#define BLACK_BOLD_S        CSI "1;30m" // another name for GRAY
+
+#ifdef XMRIG_OS_APPLE
+#   define BLACK_BOLD_S     CSI "0;37m"
+#else
+#   define BLACK_BOLD_S     CSI "1;30m" // another name for GRAY
+#endif
+
 #define RED_S               CSI "0;31m"
 #define RED_BOLD_S          CSI "1;31m"
 #define GREEN_S             CSI "0;32m"
@@ -97,6 +103,7 @@ private:
 #define WHITE_S             CSI "0;37m" // another name for LT.GRAY
 #define WHITE_BOLD_S        CSI "1;37m" // actually white
 
+#define RED_BG_BOLD_S       CSI "41;1m"
 #define GREEN_BG_BOLD_S     CSI "42;1m"
 #define YELLOW_BG_BOLD_S    CSI "43;1m"
 #define BLUE_BG_S           CSI "44m"
@@ -124,6 +131,7 @@ private:
 #define WHITE(x)            WHITE_S x CLEAR
 #define WHITE_BOLD(x)       WHITE_BOLD_S x CLEAR
 
+#define RED_BG_BOLD(x)      RED_BG_BOLD_S x CLEAR
 #define GREEN_BG_BOLD(x)    GREEN_BG_BOLD_S x CLEAR
 #define YELLOW_BG_BOLD(x)   YELLOW_BG_BOLD_S x CLEAR
 #define BLUE_BG(x)          BLUE_BG_S x CLEAR
@@ -142,8 +150,11 @@ private:
 #define LOG_NOTICE(x, ...)  xmrig::Log::print(xmrig::Log::NOTICE,  x, ##__VA_ARGS__)
 #define LOG_INFO(x, ...)    xmrig::Log::print(xmrig::Log::INFO,    x, ##__VA_ARGS__)
 #define LOG_VERBOSE(x, ...) if (xmrig::Log::verbose() > 0) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_V(x, ...)       if (xmrig::Log::verbose() > 0) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_VV(x, ...)      if (xmrig::Log::verbose() > 1) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V1(x, ...)      if (xmrig::Log::verbose() > 0) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V2(x, ...)      if (xmrig::Log::verbose() > 1) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V3(x, ...)      if (xmrig::Log::verbose() > 2) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V4(x, ...)      if (xmrig::Log::verbose() > 3) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V5(x, ...)      if (xmrig::Log::verbose() > 4) { xmrig::Log::print(xmrig::Log::INFO, x, ##__VA_ARGS__); }
 
 #ifdef APP_DEBUG
 #   define LOG_DEBUG(x, ...) xmrig::Log::print(xmrig::Log::DEBUG, x, ##__VA_ARGS__)

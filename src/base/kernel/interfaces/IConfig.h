@@ -74,6 +74,16 @@ public:
         DaemonPollKey        = 1019,
         SelfSelectKey        = 1028,
         DataDirKey           = 1035,
+        TitleKey             = 1037,
+        NoTitleKey           = 1038,
+        PauseOnBatteryKey    = 1041,
+        StressKey            = 1042,
+        BenchKey             = 1043,
+        BenchSubmitKey       = 1044,
+        BenchVerifyKey       = 1045,
+        BenchSeedKey         = 1046,
+        BenchHashKey         = 1047,
+        BenchTokenKey        = 1048,
 
         // xmrig common
         CPUPriorityKey       = 1021,
@@ -99,6 +109,8 @@ public:
         YieldKey             = 1030,
         AstroBWTMaxSizeKey   = 1034,
         AstroBWTAVX2Key      = 1036,
+        Argon2ImplKey        = 1039,
+        RandomXCacheQoSKey   = 1040,
 
         // xmrig amd
         OclPlatformKey       = 1400,

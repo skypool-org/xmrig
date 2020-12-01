@@ -87,9 +87,27 @@ static const option options[] = {
     { "cpu-max-threads-hint",  1, nullptr, IConfig::CPUMaxThreadsKey      },
     { "cpu-memory-pool",       1, nullptr, IConfig::MemoryPoolKey         },
     { "cpu-no-yield",          0, nullptr, IConfig::YieldKey              },
+    { "no-yield",              0, nullptr, IConfig::YieldKey              },
+    { "cpu-argon2-impl",       1, nullptr, IConfig::Argon2ImplKey         },
+    { "argon2-impl",           1, nullptr, IConfig::Argon2ImplKey         },
     { "verbose",               0, nullptr, IConfig::VerboseKey            },
     { "proxy",                 1, nullptr, IConfig::ProxyKey              },
     { "data-dir",              1, nullptr, IConfig::DataDirKey            },
+    { "title",                 1, nullptr, IConfig::TitleKey              },
+    { "no-title",              0, nullptr, IConfig::NoTitleKey            },
+    { "pause-on-battery",      0, nullptr, IConfig::PauseOnBatteryKey     },
+#   ifdef XMRIG_FEATURE_BENCHMARK
+    { "stress",                0, nullptr, IConfig::StressKey             },
+    { "bench",                 1, nullptr, IConfig::BenchKey              },
+    { "benchmark",             1, nullptr, IConfig::BenchKey              },
+#   ifdef XMRIG_FEATURE_HTTP
+    { "submit",                0, nullptr, IConfig::BenchSubmitKey        },
+    { "verify",                1, nullptr, IConfig::BenchVerifyKey        },
+    { "token",                 1, nullptr, IConfig::BenchTokenKey         },
+#   endif
+    { "seed",                  1, nullptr, IConfig::BenchSeedKey          },
+    { "hash",                  1, nullptr, IConfig::BenchHashKey          },
+#   endif
 #   ifdef XMRIG_FEATURE_TLS
     { "tls",                   0, nullptr, IConfig::TlsKey                },
     { "tls-fingerprint",       1, nullptr, IConfig::FingerprintKey        },
@@ -114,6 +132,8 @@ static const option options[] = {
     { "wrmsr",                 2, nullptr, IConfig::RandomXWrmsrKey       },
     { "randomx-no-rdmsr",      0, nullptr, IConfig::RandomXRdmsrKey       },
     { "no-rdmsr",              0, nullptr, IConfig::RandomXRdmsrKey       },
+    { "randomx-cache-qos",     0, nullptr, IConfig::RandomXCacheQoSKey    },
+    { "cache-qos",             0, nullptr, IConfig::RandomXCacheQoSKey    },
 #   endif
     #ifdef XMRIG_ALGO_ASTROBWT
     { "astrobwt-max-size",     1, nullptr, IConfig::AstroBWTMaxSizeKey    },
